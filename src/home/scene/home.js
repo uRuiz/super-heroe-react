@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
+import md5 from 'md5';
+import config from '../../config.js';
 import SearchBar from '../components/SearchBar';
+import Card from '../containers/Card';
 
 export class Home extends Component {
   onSearchSubmit(term) {
     // eslint-disable-next-line no-console
+    console.log(config);
     console.log(term); // Borrar cuando se implemente la llamada a la API
   }
 
   render() {
     return (
-      <div className="home">
-        <SearchBar onSubmit={this.onSearchSubmit} />
-        <h1>This is home page</h1>
-      </div>
+      <main role="main">
+        <div className="album py-5 bg-light">
+          <div className="container">
+            <SearchBar onSubmit={this.onSearchSubmit} />
+            <div className="row">
+              <Card />
+              <Card />
+              <Card />
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
 }
