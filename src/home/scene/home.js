@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import md5 from 'md5';
-import config from '../../config.js';
-import SearchBar from '../components/SearchBar';
-import Card from '../containers/Card';
+import config from '../../config.template.js';
+import SearchBar from '../components/SearchBar/SearchBar';
+import Card from '../containers/Card/Card';
 
 export class Home extends Component {
   onSearchSubmit(term) {
