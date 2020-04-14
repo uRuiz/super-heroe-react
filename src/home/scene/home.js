@@ -5,10 +5,11 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import Card from '../containers/Card/Card';
 
 export class Home extends Component {
-  onSearchSubmit(term) {
-    // eslint-disable-next-line no-console
-    console.log(term); // Borrar cuando se implemente la llamada a la API
-  }
+  state = {
+    data: {}
+  };
+
+  onSearchSubmit() {}
 
   render() {
     return (
