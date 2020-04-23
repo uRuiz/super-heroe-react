@@ -1,6 +1,8 @@
 import React from 'react';
 
 function Card(props) {
+  const { name, thumbnail } = props;
+  const imageUrl = `${thumbnail}.jpg`;
   return (
     <div className="col-md-4">
       <div className="card mb-4 shadow-sm">
@@ -14,14 +16,10 @@ function Card(props) {
           role="img"
           aria-label="Placeholder: Thumbnail"
         >
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#55595c" />
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-            Thumbnail
-          </text>
+          <image href={imageUrl} width="100%" height="100%" />
         </svg>
         <div className="card-body">
-          <h4>Heroe Name</h4>
+          <h4>{name}</h4>
           <p className="card-text">
             This is a wider card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.

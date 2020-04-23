@@ -13,7 +13,6 @@ class SearchBar extends Component {
   // función creada para ejecutar la consulta cuando se haga click en el botón del formulario o se pulse Intro
   onFormSubmit = (event) => {
     event.preventDefault();
-
     const { inputCharacter } = this.state;
 
     const hash = md5(config.ts + config.privateKey + config.publicKey);
@@ -24,11 +23,9 @@ class SearchBar extends Component {
     fetch(endPointCall)
       .then((res) => res.json())
       .then((data) => {
-        const { results, total } = data.data;
-        console.log(results);
+        const { results } = data.data;
+        this.props.onSubmit(results);
       });
-
-    this.props.onSubmit(this.state.query);
   };
   // función creada para transformar el formulario en un componente controlado
   onInputChange = (event) => {
