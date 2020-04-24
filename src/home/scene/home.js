@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
 import SearchBar from '../components/SearchBar/SearchBar';
-import Card from '../containers/Card/Card';
+import CardsList from '../components/CardsList/CardsList';
 
 export class Home extends Component {
   state = {
-    results: []
+    results: [],
+    usedSearch: false
   };
 
-  onSearchSubmit = (results) => {
-    this.setState({ results });
+  onHandleResults = (results) => {
+    this.setState({ results, usedSearch: true });
   };
 
-  renderResults() {
-    const { results } = this.state;
-    return results.map((result) => {
-      return <Card key={result.id} name={result.name} thumbnail={result.thumbnail.path} />;
-    });
-  }
+  onRenderResults = () => {
+    return this.state.results.length === 0 ? (
+      <p>
+        Sorry!{' '}
+        <span role="img" aria-label="Sad Face">
+          😢
+        </span>{' '}
+        Results not found!
+      </p>
+    ) : (
+      <CardsList characters={this.state.results} />
+    );
+  };
 
   render() {
     return (
       <main role="main">
         <div className="album py-5 bg-light">
           <div className="container">
-            <SearchBar onSubmit={this.onSearchSubmit} />
-            <div className="row">
-              {this.state.results.length === 0 ? <p>Sin resultados</p> : this.renderResults()}
-            </div>
+            <SearchBar onSubmit={this.onHandleResults} />
+            <div className="row">{this.state.usedSearch ? this.onRenderResults() : <small />}</div>
           </div>
         </div>
       </main>

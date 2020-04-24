@@ -23,7 +23,7 @@ class SearchBar extends Component {
     fetch(endPointCall)
       .then((res) => res.json())
       .then((data) => {
-        const { results } = data.data;
+        const { results = [] } = data.data; // Por defecto results es un array vacio. En caso de no recibir datos de la API
         this.props.onSubmit(results);
       });
   };
