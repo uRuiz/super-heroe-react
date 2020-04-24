@@ -40,7 +40,7 @@ export class Header extends Component {
         </div>
         <div className="navbar navbar-dark bg-dark" id="nav-bg-color-marvel">
           <div className="container">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               <img
                 src={marvelLogo}
                 className="d-inline-block align-top"
