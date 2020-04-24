@@ -2,7 +2,7 @@ import React from 'react';
 
 function Card(props) {
   const { name, thumbnail } = props;
-  const imageUrl = `${thumbnail}.jpg`;
+  const imageUrl = `${thumbnail}/standard_fantastic.jpg`;
   return (
     <div className="col-md-4">
       <div className="card mb-4 shadow-sm">
