@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from '../components/SearchBar/SearchBar';
 import CardsList from '../components/CardsList/CardsList';
+import CardDetail from '../components/CardDetail/CardDetail';
 
 export class Home extends Component {
   state = {
@@ -27,6 +28,13 @@ export class Home extends Component {
   };
 
   render() {
+    const url = new URL(document.location);
+    const hasId = url.searchParams.has('id');
+
+    if (hasId) {
+      return <CardDetail id={url.searchParams.get('id')} />;
+    }
+
     return (
       <main role="main">
         <div className="album py-5 bg-light">

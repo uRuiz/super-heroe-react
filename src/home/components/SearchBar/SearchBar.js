@@ -16,7 +16,7 @@ class SearchBar extends Component {
     const { inputCharacter } = this.state;
 
     const hash = md5(config.ts + config.privateKey + config.publicKey);
-    const endPointCall = `${config.url}ts=${config.ts}&apikey=${
+    const endPointCall = `${config.url}?ts=${config.ts}&apikey=${
       config.publicKey
     }&hash=${hash}&nameStartsWith=${inputCharacter}`;
 
