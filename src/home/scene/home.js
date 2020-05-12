@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from '../components/SearchBar/SearchBar';
 import CardsList from '../components/CardsList/CardsList';
-import CardDetail from '../components/CardDetail/CardDetail';
+import CardDetail from '../../details/components/CardDetail/CardDetail';
 
 export class Home extends Component {
   state = {
