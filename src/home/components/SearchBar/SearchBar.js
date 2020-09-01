@@ -25,8 +25,12 @@ class SearchBar extends Component {
       .then((data) => {
         const { results = [] } = data.data; // Por defecto results es un array vacio. En caso de no recibir datos de la API
         this.props.onSubmit(results);
+      })
+      .catch((e) => {
+        this.props.onSubmit(e);
       });
   };
+
   // función creada para transformar el formulario en un componente controlado
   onInputChange = (event) => {
     this.setState({ inputCharacter: event.target.value });
