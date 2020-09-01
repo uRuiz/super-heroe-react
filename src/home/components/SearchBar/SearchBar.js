@@ -1,20 +1,35 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import './SearchBar.css';
+import PropTypes from 'prop-types';
+
+import md5 from 'md5';
+import config from '../../../config.template.js';
 
 class SearchBar extends Component {
   state = {
-    query: ''
+    inputCharacter: ''
   };
 
   // función creada para ejecutar la consulta cuando se haga click en el botón del formulario o se pulse Intro
   onFormSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state.query);
+    const { inputCharacter } = this.state;
+
+    const hash = md5(config.ts + config.privateKey + config.publicKey);
+    const endPointCall = `${config.url}?ts=${config.ts}&apikey=${
+      config.publicKey
+    }&hash=${hash}&nameStartsWith=${inputCharacter}`;
+
+    fetch(endPointCall)
+      .then((res) => res.json())
+      .then((data) => {
+        const { results = [] } = data.data; // Por defecto results es un array vacio. En caso de no recibir datos de la API
+        this.props.onSubmit(results);
+      });
   };
   // función creada para transformar el formulario en un componente controlado
   onInputChange = (event) => {
-    this.setState({ query: event.target.value });
+    this.setState({ inputCharacter: event.target.value });
   };
 
   render() {
@@ -40,5 +55,9 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func
+};
 
 export default SearchBar;

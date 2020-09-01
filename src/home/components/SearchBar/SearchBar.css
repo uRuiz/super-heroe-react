@@ -5,13 +5,14 @@
     width: 2.375rem;
     height: 2.375rem;
     line-height: 2.375rem;
+    margin-left: 0.5rem;
     text-align: center;
     pointer-events: none;
     color: #aaa;
   }
 
 .has-search .form-control {
-    padding-left: 2.375rem;    
+  padding-left: 2.375rem;    
 }
 
 .search-form {
