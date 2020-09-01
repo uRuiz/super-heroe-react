@@ -29,9 +29,9 @@ function Card(props) {
           </p>
           <div className="d-flex justify-content-center align-items-center mx-auto">
             <div className="btn-group">
-              <button type="button" className="btn btn-danger">
+              <a href={`?id=${id}`} className="btn btn-danger view-botton">
                 View
-              </button>
+              </a>
             </div>
           </div>
         </div>

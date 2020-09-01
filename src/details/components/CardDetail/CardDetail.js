@@ -18,7 +18,6 @@ class CardDetail extends Component {
     fetch(endPointCall)
       .then((res) => res.json())
       .then((detail) => {
-        console.log(detail.data.results[0]);
         this.setState({ detail: detail.data.results[0] });
       });
   }
